@@ -47,8 +47,10 @@
                     <div class="justify-end mt-4 text-sm">
                         <div>
                             <span class="text-gray-700 dark:text-gray-400">
-                                Chi tiết sản phẩm
+                                Tải lên danh sách sản phẩm
                             </span>
+                            <br>
+                            <span>Tải về Template: <a href="/Template.xlsx">Download</a></span>
                         </div>
                         <div>
                             <form enctype="multipart/form-data">
