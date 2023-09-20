@@ -34,6 +34,7 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
     <!--===============================================================================================-->
 </head>
 
@@ -55,13 +56,25 @@
                             Help & FAQs
                         </a>
 
+                        @if (isset(auth()->user()->name))
                         <a href="#" class="flex-c-m trans-04 p-lr-25">
-                            My Account
+                            {{ auth()->user()->name }}
                         </a>
+                        <a href="/user/deposit" class="flex-c-m trans-04 p-lr-25">
+                            Balance: {{ number_format(auth()->user()->balance) }}
+                        </a>
+                        <form action="/logout" method="POST" class="flex-c-m trans-04 p-lr-25">
+                            @csrf
+                            <button type="submit">
+                                <p class="flex-c-m trans-04 p-lr-25" style="color: #b2b2b2">Logout</p>
+                            </button>
+                        </form>
+                        @else
+                        <a href="/login" class="flex-c-m trans-04 p-lr-25">
+                            Login
+                        </a>
+                        @endif
 
-                        <a href="#" class="flex-c-m trans-04 p-lr-25">
-                            EN
-                        </a>
 
                         <a href="#" class="flex-c-m trans-04 p-lr-25">
                             USD
