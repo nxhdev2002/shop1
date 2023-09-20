@@ -8,6 +8,7 @@ use App\Models\feedback;
 use App\Models\Product;
 use App\Models\ProductStatistic;
 use App\Models\User;
+use App\Models\Cart;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,11 +26,21 @@ class ProductController extends Controller
     {
         $data = array();
         $data['title'] = "Danh sách sản phẩm";
-        $data['products'] = DB::table('products')
-            ->where('is_removed', 0)
+        $data['products'] = Product::where('is_removed', 0)
             ->orderBy('rank_point', 'DESC')
-            ->paginate(12);
-        $data['categories'] = Category::all();
+            ->paginate(8);
+        $data['categories'] = Category::where('status', 1)->get();
+        if (auth()->user()) {
+            $data['carts'] = Cart::where('user_id', auth()->user()->id)->get();
+            $data['total'] = 0;
+            foreach ($data['carts'] as $value) {
+                $data['total'] += $value->product->price * $value->quantity;
+            }
+        } else {
+            $data['carts'] = [];
+            $data['total'] = 0;
+        }
+
         return view('product.index', $data);
     }
 
@@ -71,6 +82,16 @@ class ProductController extends Controller
         $data['category'] = Category::find($data['product']->category_id);
         $data['seller'] = User::find($data['product']->seller_id);
         $data['title'] = $data['product']->name;
+        if (auth()->user()) {
+            $data['carts'] = Cart::where('user_id', auth()->user()->id)->get();
+            $data['total'] = 0;
+            foreach ($data['carts'] as $value) {
+                $data['total'] += $value->product->price * $value->quantity;
+            }
+        } else {
+            $data['carts'] = [];
+            $data['total'] = 0;
+        }
         return view('product.info', $data);
     }
 

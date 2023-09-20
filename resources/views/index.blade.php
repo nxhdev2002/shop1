@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-                            <a href="product.html"
+                            <a href="{{route('products.showByName', ['id' => $product->id, 'name' => \App\Helpers\Utils::create_slug($product->name)])}}"
                                 class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                 Shop Now
                             </a>
@@ -39,12 +39,11 @@
 </section>
 
 
-<!-- Banner -->
+<!-- Banner
 <div class="sec-banner bg0 p-t-80 p-b-50">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-                <!-- Block1 -->
                 <div class="block1 wrap-pic-w">
                     <img src="images/banner-01.jpg" alt="IMG-BANNER">
 
@@ -70,7 +69,6 @@
             </div>
 
             <div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-                <!-- Block1 -->
                 <div class="block1 wrap-pic-w">
                     <img src="images/banner-02.jpg" alt="IMG-BANNER">
 
@@ -96,7 +94,6 @@
             </div>
 
             <div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-                <!-- Block1 -->
                 <div class="block1 wrap-pic-w">
                     <img src="images/banner-03.jpg" alt="IMG-BANNER">
 
@@ -122,7 +119,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 <!-- Product -->
@@ -391,7 +388,7 @@
                     <div class="block2-pic hov-img0">
                         <img src="{{$product->picture_url}}" alt="IMG-PRODUCT">
 
-                        <a href="#"
+                        <a href="{{route('products.showByName', ['id' => $product->id, 'name' => \App\Helpers\Utils::create_slug($product->name)])}}"
                             class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                             Quick View
                         </a>
@@ -399,7 +396,8 @@
 
                     <div class="block2-txt flex-w flex-t p-t-14">
                         <div class="block2-txt-child1 flex-col-l ">
-                            <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                            <a href="{{route('products.showByName', ['id' => $product->id, 'name' => \App\Helpers\Utils::create_slug($product->name)])}}"
+                                class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                 {{$product->name}}
                             </a>
 

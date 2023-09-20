@@ -32,7 +32,7 @@ class AdminController extends Controller
         $totalOrders = Order::count();
 
         // Lấy số lượng đơn hàng theo từng category
-        $categoryOrders = Category::leftJoin('products', 'categories.id', '=', 'products.category_id')
+        $categoryOrders = Category::where('categories.status', '1')->leftJoin('products', 'categories.id', '=', 'products.category_id')
             ->leftJoin('orders', 'products.id', '=', 'orders.product_id')
             ->select('categories.id', 'categories.name', DB::raw('COUNT(orders.id) as order_count'))
             ->groupBy('categories.id', 'categories.name')

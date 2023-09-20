@@ -231,6 +231,8 @@
     });
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <!--===============================================================================================-->
 <script src="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
 <script>
@@ -251,9 +253,6 @@
 <!--===============================================================================================-->
 <script src="{{ asset('js/main.js') }}"></script>
 
-</body>
-
-</html>
 @if ($errors -> any())
 <script>
     Swal.fire({

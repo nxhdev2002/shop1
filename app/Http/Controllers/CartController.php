@@ -60,10 +60,6 @@ class CartController extends Controller
 
     public function confirm(Request $request)
     {
-        $request->validate([
-            'email' => 'bail|email|required',
-            'name' => 'bail|required'
-        ]);
         $carts = Cart::where('user_id', auth()->user()->id)->orderBy('id', 'ASC')->get();
         $total = 0;
         foreach ($carts as $key => $cart) {
@@ -125,12 +121,6 @@ class CartController extends Controller
                 $trans->save();
 
                 $cart->delete();
-
-                try {
-                    $mail = new OrderMail($order, $request['email']);
-                    Mail::send($mail);
-                } catch (Exception $ex) {
-                }
             }
         } catch (\Exception $e) {
             return redirect()->route('user.cart.index')->withErrors($e->getMessage());

@@ -40,7 +40,7 @@
 <body class="animsition">
 
     <!-- Header -->
-    <header>
+    <header class="header-v4">
         <!-- Header desktop -->
         <div class="container-menu-desktop">
             <!-- Topbar -->
@@ -91,23 +91,23 @@
                             </li>
 
                             <li>
-                                <a href="product.html">Shop</a>
+                                <a href="/products">Shop</a>
                             </li>
 
                             <li class="label1" data-label1="hot">
-                                <a href="shoping-cart.html">Features</a>
+                                <a href="/products">Features</a>
                             </li>
 
                             <li>
-                                <a href="blog.html">Blog</a>
+                                <a href="#">Blog</a>
                             </li>
 
                             <li>
-                                <a href="about.html">About</a>
+                                <a href="#">About</a>
                             </li>
 
                             <li>
-                                <a href="contact.html">Contact</a>
+                                <a href="#">Contact</a>
                             </li>
                         </ul>
                     </div>
@@ -119,7 +119,7 @@
                         </div>
 
                         <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-                            data-notify="2">
+                            data-notify="{{isset($carts) ? count($carts) : 0}}">
                             <i class="zmdi zmdi-shopping-cart"></i>
                         </div>
 
@@ -147,7 +147,7 @@
                 </div>
 
                 <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
-                    data-notify="2">
+                    data-notify="{{isset($carts) ? count($carts) : 0}}">
                     <i class="zmdi zmdi-shopping-cart"></i>
                 </div>
 
@@ -293,12 +293,12 @@
                     </div>
 
                     <div class="w-full header-cart-buttons flex-w">
-                        <a href="shoping-cart.html"
+                        <a href="/user/cart"
                             class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
                             View Cart
                         </a>
 
-                        <a href="shoping-cart.html"
+                        <a href="/user/cart"
                             class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
                             Check Out
                         </a>
