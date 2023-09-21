@@ -133,7 +133,7 @@
                 <nav class="container limiter-menu-desktop">
 
                     <!-- Logo desktop -->
-                    <a href="#" class="logo" style="font-size:25px; color: #000">
+                    <a href="/" class="logo" style="font-size:25px; color: #000">
                         HUBT STORE
                     </a>
 
