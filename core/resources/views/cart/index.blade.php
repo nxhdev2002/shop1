@@ -31,9 +31,9 @@
                             <th class="column-5">Total</th>
                         </tr>
                         @foreach ($carts as $cart)
-                        <tr class="table_row">
+                        <tr class="table_row product-{{$cart->product->id}}">
                             <td class="column-1">
-                                <div class="how-itemcart1">
+                                <div class="how-itemcart1" onclick="remove('{{$cart->product->id}}')">
                                     <img src="{{$cart->product->picture_url}}" alt="IMG">
                                 </div>
                             </td>
@@ -161,7 +161,7 @@
                 <form action="/user/cart/confirm" method="POST">
                     @csrf
                     <button type="submit"
-                        class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer bg-gray-700">
+                        class="bg-gray-700 flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
                         Proceed to Checkout
                     </button>
                 </form>

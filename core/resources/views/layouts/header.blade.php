@@ -47,6 +47,30 @@
             darkMode: 'class'
         }
     </script>
+    <script>
+        function deleteCart(product_id) {
+            $(`#status-${product_id}`).removeClass("hidden")
+            $.ajax({
+                url: '{{route("user.cart.remove")}}',
+                data: {
+                    'product_id': product_id
+                },
+                type: 'DELETE',
+                success: function (res) {
+                    toastr.success(res.message)
+                    loadCart()
+                }
+            })
+        }
+
+        async function remove(id) {
+            deleteCart(id)
+            $('#product-' + id).removeClass('opacity-100').addClass('opacity-0')
+            await new Promise(r => setTimeout(r, 300));
+            $('#product-' + id).addClass('hidden')
+            window.top.location = window.top.location
+        }
+    </script>
     <!--===============================================================================================-->
 </head>
 
@@ -291,8 +315,8 @@
                 <ul class="w-full header-cart-wrapitem">
 
                     @foreach ($carts as $cart)
-                    <li class="header-cart-item flex-w flex-t m-b-12">
-                        <div class="header-cart-item-img">
+                    <li class="header-cart-item flex-w flex-t m-b-12 product-{{$cart->product->id}}">
+                        <div class="header-cart-item-img" onclick="remove('{{$cart->product->id}}')">
                             <img src="{{$cart->product->picture_url}}" alt="IMG">
                         </div>
 
