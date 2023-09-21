@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -69,12 +69,24 @@
                         </a>
 
                         @if (isset(auth()->user()->name))
-                        <a href="#" class="flex-c-m trans-04 p-lr-25">
+                        <a href="/seller/dashboard" class="flex-c-m trans-04 p-lr-25">
                             {{ auth()->user()->name }}
                         </a>
                         <a href="/user/deposit" class="flex-c-m trans-04 p-lr-25">
                             Balance: {{ number_format(auth()->user()->balance) }}
                         </a>
+
+                        <a href="/user/orders" class="flex-c-m trans-04 p-lr-25">
+                            Order History
+                        </a>
+
+                        @if (auth()->user()->rights >= 5)
+
+                        <a href="/admin" class="flex-c-m trans-04 p-lr-25">
+                            Admin Panel
+                        </a>
+
+                        @endif
                         <form action="/logout" method="POST" class="flex-c-m trans-04 p-lr-25">
                             @csrf
                             <button type="submit">
@@ -88,9 +100,7 @@
                         @endif
 
 
-                        <a href="#" class="flex-c-m trans-04 p-lr-25">
-                            USD
-                        </a>
+
                     </div>
                 </div>
             </div>
@@ -100,19 +110,15 @@
 
                     <!-- Logo desktop -->
                     <a href="#" class="logo" style="font-size:25px; color: #000">
-                        ZARA STORE
+                        HUBT STORE
                     </a>
 
                     <!-- Menu desktop -->
                     <div class="menu-desktop">
                         <ul class="main-menu">
-                            <li class="active-menu">
+                            <li class="">
                                 <a href="/">Home</a>
-                                <ul class="sub-menu">
-                                    <li><a href="/">Homepage 1</a></li>
-                                    <li><a href="/">Homepage 2</a></li>
-                                    <li><a href="/">Homepage 3</a></li>
-                                </ul>
+
                             </li>
 
                             <li>
@@ -223,15 +229,7 @@
 
             <ul class="main-menu-m">
                 <li>
-                    <a href="index.html">Home</a>
-                    <ul class="sub-menu-m">
-                        <li><a href="index.html">Homepage 1</a></li>
-                        <li><a href="home-02.html">Homepage 2</a></li>
-                        <li><a href="home-03.html">Homepage 3</a></li>
-                    </ul>
-                    <span class="arrow-main-menu-m">
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </span>
+                    <a href="/">Home</a>
                 </li>
 
                 <li>

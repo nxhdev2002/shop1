@@ -158,10 +158,10 @@
                         </span>
                     </div>
                 </div>
-                <form action="{{route('user.cart.confirm')}}" method="POST">
+                <form action="/user/cart/confirm" method="POST">
                     @csrf
                     <button type="submit"
-                        class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                        class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer bg-gray-700">
                         Proceed to Checkout
                     </button>
                 </form>

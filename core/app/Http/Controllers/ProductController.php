@@ -28,7 +28,7 @@ class ProductController extends Controller
         $data['title'] = "Danh sách sản phẩm";
         $data['products'] = Product::where('is_removed', 0)
             ->orderBy('rank_point', 'DESC')
-            ->paginate(8);
+            ->paginate(9999);
         $data['categories'] = Category::where('status', 1)->get();
         if (auth()->user()) {
             $data['carts'] = Cart::where('user_id', auth()->user()->id)->get();

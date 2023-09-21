@@ -30,13 +30,7 @@ class SiteController extends Controller
             ->get();
 
 
-        $products = Product::withCount('orders')
-            ->where('is_removed', 0)
-            ->orderBy('orders_count', 'desc')
-            ->where('status', '1')
-            ->where('amount', '>', 0)
-            ->take(10)
-            ->get();
+
 
         $categories = Category::where('status', 1)->get();
 
@@ -65,6 +59,14 @@ class SiteController extends Controller
             $total = 0;
         }
 
+        $products = Product::withCount('orders')
+        ->where('is_removed', 0)
+        ->orderBy('orders_count', 'desc')
+        ->where('status', '1')
+        ->where('amount', '>=', 0)
+        ->take(12)
+        ->get();
+        
         return view('index', compact(
             'title',
             'categories',

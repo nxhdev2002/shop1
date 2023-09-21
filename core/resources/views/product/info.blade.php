@@ -207,15 +207,28 @@
                                 </div>
 
                                 Available: {{$product->amount}}
+                                <br />
 
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="flex-w flex-r-m p-b-10">
+                        <div class="size-203 flex-c-m respon6">
+
+                        </div>
+
+                        <div class="size-204 respon6-next">
+                            <div class="rs1-select2 bg0">
                                 <button onclick="addToCart()"
                                     class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+
                                     Add to cart
                                 </button>
                             </div>
                         </div>
                     </div>
-
                     <!--  -->
                     <div class="flex-w flex-m p-l-100 p-t-40 respon7">
                         <div class="flex-m bor9 p-r-10 m-r-11">
@@ -455,7 +468,7 @@
     function addToCart() {
         let quantity = $('#quantity').val()
         let product_id = `{{$product->id}}`
-        $.post("{{route('user.cart.add')}}", {
+        $.post("/user/cart/add-to-cart", {
             'product_id': product_id,
             'quantity': quantity
         }).done(function (data) {
@@ -471,7 +484,10 @@
                     data.message,
                     'success'
                 )
-                loadCart()
+                setTimeout(() => {
+                    window.location = window.location
+                }, 1000)
+
             }
             // if (!data.append) {
             // $('#total').text(parseInt($('#total').text()) + 1)
