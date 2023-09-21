@@ -51,7 +51,7 @@
         function deleteCart(product_id) {
             $(`#status-${product_id}`).removeClass("hidden")
             $.ajax({
-                url: '{{route("user.cart.remove")}}',
+                url: '/user/cart/remove',
                 data: {
                     'product_id': product_id
                 },
